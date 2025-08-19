@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "NEXTAUTH_URL": "@nextauth_url",
+    "NEXTAUTH_SECRET": "@nextauth_secret",
+    "DATABASE_URL": "@database_url",
+    "SUPABASE_URL": "@supabase_url",
+    "SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
+    "DEEPSEEK_API_KEY": "@deepseek_api_key",
+    "DEEPSEEK_BASE_URL": "@deepseek_base_url"
+  },
+  "functions": {
+    "app/api/upload/complete/route.ts": {
+      "maxDuration": 60
+    },
+    "app/api/upload/with-ocr/route.ts": {
+      "maxDuration": 60
+    }
+  }
+}
