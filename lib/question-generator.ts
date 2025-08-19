@@ -1,4 +1,4 @@
-import { OpenAIService } from './deepseek-service'
+import { OpenAIService } from './openai-service'
 import { EmbeddingService } from './embeddings'
 import { prisma } from './prisma'
 import { Question, QuestionType } from '@prisma/client'

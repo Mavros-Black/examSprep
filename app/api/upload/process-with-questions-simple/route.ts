@@ -4,7 +4,7 @@ import { authOptions } from '../../auth/[...nextauth]/route'
 import { createS3Client } from '@/lib/supabase-s3'
 import { GetObjectCommand } from '@aws-sdk/client-s3'
 import { prisma } from '@/lib/prisma'
-import { OpenAIService } from '@/lib/deepseek-service'
+import { OpenAIService } from '@/lib/openai-service'
 
 export async function POST(request: NextRequest) {
   try {
