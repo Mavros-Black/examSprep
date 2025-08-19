@@ -16,10 +16,6 @@
     "DEEPSEEK_API_KEY": "@deepseek_api_key",
     "DEEPSEEK_BASE_URL": "@deepseek_base_url"
   },
-  "functions": {
-    "app/api/upload/complete/route.ts": {
-      "maxDuration": 60
-    },
     "app/api/upload/with-ocr/route.ts": {
       "maxDuration": 60
     }
