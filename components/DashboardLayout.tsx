@@ -17,7 +17,8 @@ import {
   LogOut,
   Sparkles,
   Crown,
-  FileText
+  FileText,
+  Brain
 } from 'lucide-react'
 
 interface NavItem {
@@ -31,6 +32,7 @@ const navigation: NavItem[] = [
   { name: 'Dashboard', href: '/dashboard', icon: Home },
   { name: 'Documents', href: '/documents', icon: FileText },
   { name: 'Upload', href: '/upload', icon: Upload },
+  { name: 'AI Generator', href: '/ai-generator', icon: Brain, badge: 'AI' },
   { name: 'Practice', href: '/practice', icon: BookOpen, badge: 'New' },
   { name: 'Results', href: '/results', icon: BarChart3 },
   { name: 'Settings', href: '/settings', icon: Settings },

@@ -87,6 +87,7 @@ model Document {
   tags        String[]
   isPublic    Boolean  @default(false)
   processingStatus ProcessingStatus @default(PENDING)
+  metadata    Json?    // Store extracted metadata, processing info, etc.
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -128,7 +129,7 @@ model Question {
 model Attempt {
   id          String        @id @default(cuid())
   score       Float?
-  maxScore    Float
+  maxScore    Float?        // Made optional to avoid migration issues
   timeSpent   Int           // in seconds
   status      AttemptStatus @default(IN_PROGRESS)
   answers     Json          // Store user answers

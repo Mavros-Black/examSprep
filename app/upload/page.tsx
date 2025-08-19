@@ -1,5 +1,6 @@
 import DashboardLayout from '@/components/DashboardLayout'
 import UploadDropzone from '@/components/UploadDropzone'
+import FileParser from '@/components/FileParser'
 import { Upload, FileText, Image, Zap } from 'lucide-react'
 
 export default function UploadPage() {
@@ -55,7 +56,10 @@ export default function UploadPage() {
         {/* Upload Zone */}
         <UploadDropzone />
 
-        {/* Processing Information */}
+            {/* File Parser Test */}
+    <FileParser />
+
+    {/* Processing Information */}
         <div className="mt-8 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">How It Works</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

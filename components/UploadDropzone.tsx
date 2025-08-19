@@ -61,7 +61,7 @@ export default function UploadDropzone() {
         )
 
         // Upload file
-        const response = await fetch('/api/upload/complete', {
+        const response = await fetch('/api/upload/simple', {
           method: 'POST',
           body: formData
         })
