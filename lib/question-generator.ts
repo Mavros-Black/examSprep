@@ -1,4 +1,4 @@
-import { DeepSeekService } from './deepseek-service'
+import { OpenAIService } from './deepseek-service'
 import { EmbeddingService } from './embeddings'
 import { prisma } from './prisma'
 import { Question, QuestionType } from '@prisma/client'
@@ -57,7 +57,7 @@ Guidelines:
 - The response MUST be a JSON object matching the following schema. Do NOT include any other text, markdown, or comments outside the JSON.
 `
 
-    const response = await DeepSeekService.generateStructuredResponse(
+    const response = await OpenAIService.getInstance().generateStructuredResponse(
       prompt,
       questionSchema
     )

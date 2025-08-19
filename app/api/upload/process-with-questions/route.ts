@@ -4,7 +4,7 @@ import { authOptions } from '../../auth/[...nextauth]/route'
 import { createS3Client } from '@/lib/supabase-s3'
 import { GetObjectCommand } from '@aws-sdk/client-s3'
 import { prisma } from '@/lib/prisma'
-import { DeepSeekService } from '@/lib/deepseek-service'
+import { OpenAIService } from '@/lib/deepseek-service'
 import sharp from 'sharp'
 import pdf from 'pdf-parse'
 import Tesseract from 'tesseract.js'
@@ -460,7 +460,7 @@ Requirements:
 Generate exactly ${questionCount} questions in JSON format.
 `
 
-    const response = await DeepSeekService.generateStructuredResponse(
+            const response = await OpenAIService.getInstance().generateStructuredResponse(
       prompt,
       {
         questions: [

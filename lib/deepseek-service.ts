@@ -1,29 +1,29 @@
 import { generateText } from 'ai'
-import { deepseek } from '@ai-sdk/deepseek'
+import { openai } from '@ai-sdk/openai'
 
-export class DeepSeekService {
-  private static instance: DeepSeekService
+export class OpenAIService {
+  private static instance: OpenAIService
 
   private constructor() {}
 
-  public static getInstance(): DeepSeekService {
-    if (!DeepSeekService.instance) {
-      DeepSeekService.instance = new DeepSeekService()
+  public static getInstance(): OpenAIService {
+    if (!OpenAIService.instance) {
+      OpenAIService.instance = new OpenAIService()
     }
-    return DeepSeekService.instance
+    return OpenAIService.instance
   }
 
   async generateText(prompt: string): Promise<string> {
     try {
       const { text } = await generateText({
-        model: deepseek('deepseek-chat'),
+        model: openai('gpt-3.5-turbo'),
         prompt,
-        maxTokens: 2000,
+        maxTokens: 8000,
         temperature: 0.7,
       })
       return text
     } catch (error) {
-      console.error('DeepSeek text generation error:', error)
+      console.error('OpenAI text generation error:', error)
       throw new Error(`Text generation failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
     }
   }
@@ -31,7 +31,7 @@ export class DeepSeekService {
   async generateEmbedding(text: string): Promise<number[]> {
     try {
       // For now, return a simple hash-based embedding
-      // In production, you would use DeepSeek's embedding API
+      // In production, you would use OpenAI's embedding API
       const hash = this.simpleHash(text)
       const embedding = new Array(1536).fill(0)
       for (let i = 0; i < Math.min(hash.length, 1536); i++) {
@@ -39,7 +39,7 @@ export class DeepSeekService {
       }
       return embedding
     } catch (error) {
-      console.error('DeepSeek embedding generation error:', error)
+      console.error('OpenAI embedding generation error:', error)
       throw new Error(`Embedding generation failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
     }
   }
@@ -55,7 +55,7 @@ export class DeepSeekService {
       similarities.sort((a, b) => b.similarity - a.similarity)
       return similarities.slice(0, 3).map(s => s.document)
     } catch (error) {
-      console.error('DeepSeek similarity search error:', error)
+      console.error('OpenAI similarity search error:', error)
       return documents.slice(0, 3) // Fallback to first 3 documents
     }
   }
@@ -63,9 +63,9 @@ export class DeepSeekService {
   async generateStructuredResponse(prompt: string, schema: any): Promise<any> {
     try {
       const { text } = await generateText({
-        model: deepseek('deepseek-chat'),
+        model: openai('gpt-3.5-turbo'),
         prompt: `${prompt}\n\nPlease respond with valid JSON only, no markdown formatting.`,
-        maxTokens: 3000,
+        maxTokens: 8000,
         temperature: 0.3,
       })
 
@@ -91,7 +91,7 @@ export class DeepSeekService {
         return this.generateFallbackResponse(schema)
       }
     } catch (error) {
-      console.error('DeepSeek structured response error:', error)
+      console.error('OpenAI structured response error:', error)
       return this.generateFallbackResponse(schema)
     }
   }
@@ -137,4 +137,4 @@ export class DeepSeekService {
 }
 
 // Export a singleton instance
-export const deepseekService = DeepSeekService.getInstance() 
+export const openaiService = OpenAIService.getInstance() 
