@@ -145,9 +145,9 @@ export default function ResultsChart() {
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600">Best Subject</p>
               <p className="text-2xl font-semibold text-gray-900">
-                {performanceData.reduce((best, current) => 
+                {performanceData.length > 0 ? performanceData.reduce((best, current) => 
                   current.score > best.score ? current : best
-                ).subject}
+                ).subject : 'N/A'}
               </p>
             </div>
           </div>
@@ -161,9 +161,9 @@ export default function ResultsChart() {
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600">Needs Improvement</p>
               <p className="text-2xl font-semibold text-gray-900">
-                {performanceData.reduce((worst, current) => 
+                {performanceData.length > 0 ? performanceData.reduce((worst, current) => 
                   current.score < worst.score ? current : worst
-                ).subject}
+                ).subject : 'N/A'}
               </p>
             </div>
           </div>
